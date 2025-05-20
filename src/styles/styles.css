@@ -1,0 +1,202 @@
+/* ======================
+   🎨 Root + Reset
+====================== */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-bg-color: #dde0e4;
+    --secondary-bg-color: #ffffff;
+    --primary-text-color: black;
+    --accent-color-A: #a6abbd;
+    --accent-color-B: #484848;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--primary-bg-color) !important;
+    color: var(--primary-text-color);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+/* ======================
+   🧱 Layout & Sections
+====================== */
+main,
+section {
+
+    margin-block: clamp(1rem, 3vw, 2rem);
+    margin-inline: clamp(2rem, 2vw, 4rem);
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+}
+
+footer {
+    margin-block: clamp(1rem, 3vw, 2rem);
+    background-color: white;
+    font-family: 'Courier Prime', monospace;
+
+}
+article {
+    padding-block-start: clamp(2rem, 3vw, 3.5rem);
+    margin-inline: clamp(2rem, 2vw, 4rem);
+}
+
+footer article {
+    margin-inline: clamp(4rem, 2vw, 4rem);
+    text-align: center;
+
+}
+article:is(:last-of-type) {
+    padding-block-end: clamp(2rem, 3vw, 3.5rem);
+}
+
+section.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+}
+
+.sub_content {
+    text-align: left;
+
+}
+
+
+
+/* ======================
+   🧠 Typography
+====================== */
+h1 {
+    font-size: clamp(2.25rem, 5vw - 2rem, 5rem);
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(2.25rem, 5vw - 2rem, 5rem);
+}
+
+.title {
+    font-size: clamp(2.25rem, 12vw - 2rem, 10rem);
+    line-height: 1;
+
+    font-weight: 100;
+}
+
+p {
+    font-size: clamp(1.1rem, 1vw, 1.4rem)
+}
+main p {
+
+    line-height: 2.25;
+}
+
+article p {
+    margin-bottom: 0;
+}
+
+article p:not(:first-of-type) {
+    margin-top: 1rem; /* or margin-bottom if you prefer */
+}
+
+
+a,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none !important;
+}
+
+
+/* ======================
+   ✨ Effects
+====================== */
+.hover {
+    transition: transform 0.2s ease;
+}
+
+.hover:hover {
+    transform: scale(1.2);
+}
+
+
+
+/* ======================
+   📱 Responsive Behavior
+====================== */
+.responsive_add_inline,
+.responsive_add_block {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 10px 5vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: center;
+        padding-block: 10px;
+    }
+
+    section,
+    main {
+        padding-inline: 10px;
+        margin-inline: 0;
+        margin-block: 40px;
+    }
+
+    article {
+        padding-block: 0px;
+        padding-inline 0px;
+    }
+
+    section.flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 40px;
+    }
+
+    .responsive_remove {
+        display: none;
+    }
+
+    .responsive_add_inline {
+        display: inline;
+    }
+
+    .responsive_add_block {
+        display: block;
+    }
+}
+
+/* ======================
+   🌐 Icon Row
+====================== */
+.icon-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-row img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.icon-row img:hover {
+    transform: scale(1.2);
+}
