@@ -1,6 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
+
+    <style>
+        body {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            background-color: #efebe7; /* Match your actual background */
+        }
+
+        body.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+
+
+    <script type="module" src="/src/main.js"></script>
     <!-- Google tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LFQRL6MNJ"></script>
 
@@ -11,7 +29,7 @@
         gtag('config', 'G-6LFQRL6MNJ');
     </script>
 
-    <script type="module" src="/src/main.js"></script>
+
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,22 +47,20 @@
 <body>
 <div id="navbarContainer"></div>
 
-<main style="text-align: left">
+<main>
     <article class="title"> Andres Krauss</article>
-    <article>
-        <p> Hi! I'm into <a href="public/projects.html" class="button_1">public speaking</a>
-            <a href="public/projects.html" class="button_1">building</a> and
+    <article class="hide-on-mobile">
+        <p> Hi! I'm into <a href="public/projects.html" class="button_1">public speaking,</a>
+            <a href="public/projects.html" class="button_1">building,</a> and
             <a href="public/projects.html" class="button_1">solving problems.</a>
             That's led me to tax, systems, and software.
         </p>
-        <p> U.S. State and Local Tax Intern, KPMG LLP Canada</p>
-        <p> Commerce Student, University of Toronto <img src="/public/media/icons/UofT.png" style="width: 22px; margin-top: -35px; margin-inline: 5px" /> </p>
-        <p> & Proudly Canadian <img src="/public/media/icons/canada1.png" style="width: 35px; margin-top: -35px; margin-left: 10px" /> </p>
+        <p> U.S. State and Local Tax Intern, KPMG LLP Canada. </p>
+        <p> Commerce Student, University of Toronto. <img src="/public/media/icons/UofT.png" style="width: 22px; margin-top: -35px; margin-inline: 5px" /> </p>
+        <p> & Proudly Canadian<img src="/public/media/icons/canada1.png" style="width: 35px; margin-top: -35px; margin-left: 10px" /> </p>
     </article>
     <article>
-        <p style="text-align: center; margin-bottom: 1rem; !important;"> Let's Connect! Send an email to
-            <a href="mailto:andreskrauss@outlook.com" class="button_special">andreskrauss@outlook.com</a>
-        </p>
+        <p style ="text-align: center; margin-bottom: 1.2rem;"> Let's Connect! <span class="hide-on-mobile"> shoot me a message at </span> <a href="mailto:andreskrauss@outlook.com" class="button_special"> <span class="hide-on-mobile">andreskrauss</span>@outlook.com </a> </p>
         <div class="icon-row">
             <a href="https://www.instagram.com/andreaskrauss_/"><img src="/public/media/icons/instagram.png" alt="Instagram" /></a>
             <a href="https://www.linkedin.com/in/andreskrauss/"><img src="/public/media/icons/linkedin.png" alt="LinkedIn" /></a>
@@ -54,31 +70,25 @@
 
 
 </main>
+
 <section style="background-color: white">
     <article style="">
         <h5> FEATURED</h5>
         <h2> Recent Updates</h2>
         <div id="my-slideshow"></div>
-        <script src="slideshow.js"></script>
-    </article>
-    <article style="padding-bottom: clamp(2rem, 3vw, 3.5rem)">
+        <script src="/src/components/slideshow.js"></script>
         <p>That's all for now!</p>
     </article>
+
 </section>
 
 <section>
     <article>
-        <p> Curious on what I'm up to? see my <a href="public/projects.html" class="button_1">projects home. </a> </p>
+        <p> Curious on what I'm up to? See my <a href="/public/projects.html" class="button_1">projects home. </a> </p>
     </article>
 </section>
 
-<footer>
-   <article>
-        <span> Krauss 2025 (c) - All rights reserved.
-        </span>
-        <a href="index.html" class="button_1" style="background-color: black; color: white; padding: 10px 20px;">Home</a>
-   </article>
-</footer>
+<footer id="footerContainer"></footer>
 
 </body>
 </html>

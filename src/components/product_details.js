@@ -1,3 +1,10 @@
+// OUT OF SERVICE
+
+
+
+// insert:                 <a href="project_details.html?index=${index}" target="_blank"> <img style="width: 22px; margin-bottom: 4px" src="/media/icons/share.png" alt="Share"> </a>
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Function to fetch CSV data from URL and parse it using PapaParse
     function fetchCSV(url, callback) {

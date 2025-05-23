@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <style>
+        body {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            background-color: #efebe7; /* Match your actual background */
+        }
+
+        body.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+
+
     <!-- Google tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LFQRL6MNJ"></script>
     <script>
@@ -26,13 +42,14 @@
 
     <section>
         <article class="title">
-            Krauss <span style="white-space: nowrap">Appr<img src="/media/icons/checkmark_circle.png" style="width: clamp(3rem, 12vw - 2rem, 12rem)">ved </span>
+            <span class="hide-on-mobile">Krauss</span>
+            <span class="show-on-mobile-inline">K-</span><span style="white-space: nowrap">Appr<img src="/media/icons/checkmark_circle.png" style="width: clamp(3rem, 12vw - 2rem, 12rem)">ved</span>
         </article>
         <article>
-            <p> Proudly family-operated<span class="responsive_remove">, we specialize in
+            <p> Founded by request. <span class="responsive_remove"> I volunteer to assist with
             <a href="#" class="button_1">resumes</a>
-            <a href="#" class="button_1">networking</a>, and
-            <a href="#" class="button_1">more</a></span> serving Canadian students <img src="/media/icons/canada1.png" style="width: 30px; margin-top: -25px; margin-left: 10px">since 2024.
+            <a href="#" class="button_1">networking</a>, &
+            <a href="#" class="button_1">more.</a></span> Serving Canadian students since 2024<img src="/media/icons/canada1.png" style="width: 30px; margin-top: -25px; margin-left: 10px">
             </p>
         </article>
 
@@ -41,13 +58,13 @@
             <a href="https://www.linkedin.com/in/andreskrauss/"><img src="/public/media/icons/linkedin.png" alt="LinkedIn" /></a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1UqC9kcS67ZeM16eSWpP4HsfSDUmaxbtUcwrGqbXC7esSFA/viewform"><img src="/media/icons/file_upload.png" alt="Upload" /></a>
         </article>
-
+    </section>
     <!-- History Section -->
     <section class="responsive_remove" style="background-color: white; justify-content: start;">
         <article style="width: 90%; text-align: left;">
-            <h1 style="border-bottom: gray 2px solid">How We Got Started</h1>
+            <h1 style="border-bottom: gray 2px solid">How I Got Started</h1>
             <p>I used to ask the same questions everyone else did — how to get an internship, what to put on a resume, what actually matters.</p>
-            <p>After landing KPMG U.S. tax and helping others do the same, I started Krauss Review to cut through the noise and share what works.</p>
+            <p>After landing an internship and helping others do the same, I started K-Approved out of need: to cut through the noise and share what works.</p>
         </article>
     </section>
 
@@ -56,32 +73,13 @@
         <article style="width: 90%; text-align: left;">
             <h1 style="border-bottom: gray 2px solid">But Hey! What's the Catch?</h1>
             <p>No catch. No sign-ups, fees, or favors — this is all pro bono for now.</p>
-            <p>If it helps and you feel like supporting, you can <a href="https://buymeacoffee.com/andreskrauss" class="button_1">buy me a coffee.</a></p>
+            <p>If it helps and you feel like supporting, you may buy me <a href="https://buymeacoffee.com/andreskrauss" class="button_special">a coffee.</a></p>
         </article>
     </section>
 
-    <!-- Buy Me a Coffee Widget -->
-    <script
-            data-name="BMC-Widget"
-            data-cfasync="false"
-            src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-            data-id="andreskrauss"
-            data-description="Support me on Buy me a coffee!"
-            data-message="Thank you for visiting!"
-            data-color="#FF813F"
-            data-position="Right"
-            data-x_margin="18"
-            data-y_margin="18"
-    ></script>
 
-    </section>
-    <footer>
-        <article>
-        <span> Krauss 2025 (c) - All rights reserved.
-        </span>
-            <a href="index.html" class="button_1" style="background-color: black; color: white; padding: 10px 20px;">Home</a>
-        </article>
-    </footer>
+    <footer id="footerContainer"></footer>
+
 
 </body>
 </html>

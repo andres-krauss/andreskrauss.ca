@@ -2,6 +2,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            background-color: #efebe7; /* Match your actual background */
+        }
+
+        body.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LFQRL6MNJ"></script>
     <script>
@@ -10,6 +25,7 @@
         gtag('js', new Date());
         gtag('config', 'G-6LFQRL6MNJ');
     </script>
+    <script type="module" src="/src/main.js"></script>
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,34 +38,28 @@
 <body>
 <div id="navbarContainer"></div>
 
-<section>
-    <Article>
+<main>
+    <Article style="text-align: center">
         <h5>FEATURED</h5>
-        <h1> Projects<span class="responsive_add_inline">!</span> <span class="responsive_remove">, Conferences, & More</span></h1>
-        <p> <span class="responsive_remove">I enjoy talking to people, and getting things done.</span> Want to know more about me? Visit my <a href="index.html" class="button_1">home page</a> </p>
+        <h1> Projects<span></span><span class="hide-on-mobile">, Conferences, & More</span></h1>
+        <p> Want to know more about me? Visit my <a href="index.html" class="button_1">home-page.</a> </p>
     </Article>
-    <article
-            style="text-align: left;"
-            id="gridContainer"
-            class="row justify-content-center"
-            data-csv="/data/catalogue/catalogue.csv"
-            data-cols="3"
-    ></article>
-</section>
+    <article>
+        <div
+                style="text-align: left;"
+                id="gridContainer"
+                class="row justify-content-center"
+                data-csv="/data/catalogue/catalogue.csv"
+                data-cols="3"
+        ></div>
+    </article>
+</main>
 
 
 
 
-<footer>
-    <div class="footer-container" style="display: flex; justify-content: space-between; align-items: center;">
-      <span> Andres Krauss 2024 | All rights reserved
-        <span class="responsive_remove">| No part of this site may be reproduced without written permission</span>
-      </span>
-        <a href="index.html" class="button_1" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none;">Home</a>
-    </div>
-</footer>
+<footer id="footerContainer"></footer>
 
-<!-- ✅ Vite entry point -->
-<script type="module" src="/src/main.js"></script>
+
 </body>
 </html>

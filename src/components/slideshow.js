@@ -7,10 +7,10 @@
     style.textContent = `
     .glintfall-slideshow {
       position: relative;
-      max-width: 800px;
-      margin: auto;
+      max-width: 80%;
+      margin-inline: auto;
+      margin-block: var(--space-block);
       overflow: hidden;
-      max-height: 400px;
     }
 
     .glintfall-slide {

@@ -6,11 +6,21 @@
 }
 
 :root {
-    --primary-bg-color: #dde0e4;
+    --primary-bg-color: #efebe7;
     --secondary-bg-color: #ffffff;
     --primary-text-color: black;
-    --accent-color-A: #a6abbd;
-    --accent-color-B: #484848;
+    --accent-color-A: #484848;
+
+    --font-mono: 'Courier Prime', monospace;
+    --font-sans: 'Open Sans', sans-serif;
+
+    --gap-default: 1rem;
+    --transition-fast: 0.2s ease;
+    --line-height-heading: 1.2;
+
+    --space-inline: clamp(0.5rem, 5vw, 3.5rem);
+    --space-block: clamp(1rem, 2.5vw + 0.5rem, 3.5rem);
+    --space-block-half: clamp(0.5rem, 1.25vw + 0.25rem, 1.75rem);
 }
 
 html {
@@ -20,7 +30,7 @@ html {
 body {
     background-color: var(--primary-bg-color) !important;
     color: var(--primary-text-color);
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-sans), serif;
     font-weight: 400;
 }
 
@@ -29,32 +39,41 @@ body {
 ====================== */
 main,
 section {
+    padding-block: var(--space-block);
+    margin-block: var(--space-block);
+    font-family: var(--font-mono), serif;
 
-    margin-block: clamp(1rem, 3vw, 2rem);
-    margin-inline: clamp(2rem, 2vw, 4rem);
+}
+
+article {
+    padding-block-start: var(--space-block);
+    padding-inline: var(--space-inline);
+}
+
+article:is(:last-of-type) {
+    padding-block-end: var(--space-block);
+}
+
+section {
     text-align: center;
-    font-family: 'Courier Prime', monospace;
+    margin-inline: var(--space-inline);
+    padding-inline: var(--space-inline);
+
 }
 
 footer {
-    margin-block: clamp(1rem, 3vw, 2rem);
-    background-color: white;
-    font-family: 'Courier Prime', monospace;
-
-}
-article {
-    padding-block-start: clamp(2rem, 3vw, 3.5rem);
-    margin-inline: clamp(2rem, 2vw, 4rem);
-}
-
-footer article {
-    margin-inline: clamp(4rem, 2vw, 4rem);
+    background-color: var(--secondary-bg-color);
+    font-family: var(--font-mono), serif;
     text-align: center;
+}
 
+
+#gridContainer .col-md-4 {
+    padding-right: calc(var(--space-inline) /3);
 }
-article:is(:last-of-type) {
-    padding-block-end: clamp(2rem, 3vw, 3.5rem);
-}
+
+
+
 
 section.flex {
     display: flex;
@@ -63,101 +82,97 @@ section.flex {
     text-align: start;
 }
 
-.sub_content {
-    text-align: left;
-
-}
-
-
-
-/* ======================
-   🧠 Typography
-====================== */
 h1 {
-    font-size: clamp(2.25rem, 5vw - 2rem, 5rem);
-    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem); /* 32px → ~56px */
+    line-height: var(--line-height-heading);
+    margin-bottom: clamp(1.5rem, 2.5vw, 3rem);
 }
 
 h2 {
-    font-size: clamp(2.25rem, 5vw - 2rem, 5rem);
+    font-size: clamp(1.5rem, 3vw + 0.25rem, 2.5rem); /* 24px → 40px */
+    line-height: var(--line-height-heading);
 }
 
 .title {
-    font-size: clamp(2.25rem, 12vw - 2rem, 10rem);
-    line-height: 1;
-
+    font-size: clamp(1rem, 9vw + 0.25rem, 7.5rem); /* 44px → 120px */
+    line-height: 0.65;
     font-weight: 100;
 }
 
 p {
-    font-size: clamp(1.1rem, 1vw, 1.4rem)
+    font-size: clamp(1rem, 0.8vw + 0.5rem, 1.1rem); /* 16px → 20px */
+    line-height:  2.25;
 }
-main p {
 
-    line-height: 2.25;
+#gridContainer p {
+    line-height:  1.5;
+    margin-block-start: 0.8rem;
 }
+
+
 
 article p {
     margin-bottom: 0;
 }
 
-article p:not(:first-of-type) {
-    margin-top: 1rem; /* or margin-bottom if you prefer */
+article p:not(:last-of-type) {
+    margin-bottom: 1rem;
 }
+
 
 
 a,
 a:visited,
 a:hover,
 a:active {
-    text-decoration: none !important;
+    text-decoration: none;
 }
-
 
 /* ======================
    ✨ Effects
 ====================== */
-.hover {
-    transition: transform 0.2s ease;
+.hover-scale {
+    transition: transform var(--transition-fast);
 }
 
-.hover:hover {
+.hover-scale:hover {
     transform: scale(1.2);
 }
-
-
 
 /* ======================
    📱 Responsive Behavior
 ====================== */
-.responsive_add_inline,
-.responsive_add_block {
+.show-on-mobile-inline,
+.show-on-mobile-block {
     display: none;
 }
 
+
 @media (max-width: 1024px) {
     .navbar {
-        padding: 10px 5vw;
+        padding-inline: 10px !important;
+    }
+    .nav-link {
+        margin-inline: 0px !important;
     }
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        justify-content: center;
-        padding-block: 10px;
-    }
+    :root {
+        --space-inline: 0px;
 
-    section,
-    main {
-        padding-inline: 10px;
-        margin-inline: 0;
-        margin-block: 40px;
     }
 
     article {
-        padding-block: 0px;
-        padding-inline 0px;
+        padding-inline: 10px;
     }
+
+
+    section,
+    main {
+        text-align: center;
+    }
+
 
     section.flex {
         flex-direction: column;
@@ -168,19 +183,22 @@ a:active {
         margin-bottom: 40px;
     }
 
-    .responsive_remove {
+    .hide-on-mobile {
         display: none;
     }
 
-    .responsive_add_inline {
+    .show-on-mobile-inline {
         display: inline;
     }
 
-    .responsive_add_block {
+    .show-on-mobile-block {
         display: block;
     }
-}
 
+
+
+
+}
 /* ======================
    🌐 Icon Row
 ====================== */
@@ -192,7 +210,7 @@ a:active {
 }
 
 .icon-row img {
-    width: 40px;
+    width: clamp(30px, 5vw, 40px);
     height: auto;
     transition: transform 0.3s ease;
 }
@@ -200,3 +218,41 @@ a:active {
 .icon-row img:hover {
     transform: scale(1.2);
 }
+
+
+/* ======================
+   🔽 Enhanced Dropdown Menu
+====================== */
+/* 🎨 Animated, square Bootstrap dropdown */
+.navbar .dropdown-menu {
+
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    left: auto !important;
+    right: 0 !important;
+    position: absolute !important;
+}
+
+.dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+}
+/* HAMBURGER */
+.navbar-toggler {
+}
+
+.navbar-nav {
+    flex-direction: column;
+
+}
+
+.navbar-toggler {
+    --bs-navbar-toggler-icon-bg: url('https://api.iconify.design/material-symbols/menu-rounded.svg?color=black');
+    border: none !important;
+}
+
+
+
+
+
