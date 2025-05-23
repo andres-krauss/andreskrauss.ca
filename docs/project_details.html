@@ -1,0 +1,59 @@
+<!-- project_details.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LFQRL6MNJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-6LFQRL6MNJ');
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main_styles.css">
+    <link rel="stylesheet" href="css/user_bar_styles.css">
+    <link rel="stylesheet" href="css/column_styles.css">
+    <link rel="stylesheet" href="css/responsive_styles.css">
+    <link rel="stylesheet" href="css/button_styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+
+
+    <script src="js/product_details.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+
+
+
+    <title>Product Details</title>
+</head>
+
+<body>
+
+<div id="navbarContainer"></div>
+
+
+
+
+<section class="main_content" style="margin: 0;">
+    <div class="row" id="productDetailsContainer"> <!-- Product details will be loaded here dynamically --></div>
+</section>
+
+
+<footer>
+    2023 Andreas Krauss. All rights reserved. <span class="responsive_remove" style="margin-left: 5px">  No part of this site may be reproduced without written permission. </span>
+    <a href="projects.html" class="button_1" style="margin-left: auto; text-align: center; background-color: black; color: white; min-width: 180px"> return to catalog <img src="data:image/png;base64,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" alt="" style="width: 30px; margin: 0; filter: invert(100%)"> </a>
+    </a>
+</footer>
+
+</body>
+</html>
