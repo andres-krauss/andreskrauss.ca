@@ -5,7 +5,7 @@ function initCatalogueGrid() {
         return;
     }
 
-    const csvURL = gridContainer.dataset.csv || '/data/catalogue/catalogue.csv';
+    const csvURL = gridContainer.dataset.csv || 'data/catalogue/catalogue.csv';
     const NUM_COLUMNS = parseInt(gridContainer.dataset.cols) || 4;
     const colClass = `col-md-${12 / NUM_COLUMNS}`;
 
@@ -31,7 +31,7 @@ function initCatalogueGrid() {
         if (trimmedItemA.startsWith("http")) {
             console.log(`🔗 item_A [row ${index}]:`, trimmedItemA);
             itemA_HTML = `<a href="${trimmedItemA}" target="_blank">
-                <img src="/media/icons/linkedin.png" style="width: 25px" alt="LinkedIn">
+                <img src="media/icons/linkedin.png" style="width: 25px" alt="LinkedIn">
             </a>`;
         } else if (trimmedItemA.length > 0) {
             console.warn(`⚠️ item_A is non-empty but not a URL [row ${index}]:`, trimmedItemA);

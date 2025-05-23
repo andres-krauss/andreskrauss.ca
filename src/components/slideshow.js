@@ -83,10 +83,10 @@
     const html = `
     <div class="glintfall-slideshow">
       <div class="glintfall-slide active">
-        <img src="/public/media/projects/networking/ccc_2025.jpg" />
+        <img src="media/projects/networking/ccc_2025.jpg" />
       </div>
       <div class="glintfall-slide">
-        <img src="/public/media/projects/glintbloom-demo.PNG" />
+        <img src="media/projects/glintbloom-demo.PNG" />
       </div>
 
       <div class="glintfall-caption-box" id="glint-caption">Hosted competition; very happy with large showing</div>

@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex-grow: 0 !important;">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-left: auto; text-align: right;">
-                            <a class="nav-link" aria-current="page" href="/public/index.html">Home</a>
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item" style="margin-left: auto; text-align: right;">
-                            <a class="nav-link" href="/public/projects.html">Projects</a>
+                            <a class="nav-link" href="projects.html">Projects</a>
                         </li>
                         <li class="nav-item" style="margin-left: auto; text-align: right;">
-                            <a class="nav-link" style="background-color: #fde6ba" href="/public/krauss_approved.html">K-Approved</a>
+                            <a class="nav-link" style="background-color: #fde6ba" href="krauss_approved.html">K-Approved</a>
                         </li>
                         <li class="nav-item dropdown" style="margin-left: auto; text-align: right;">
                             <a class="nav-link dropdown-toggle" style="margin-right: 0px !important;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Other</a>
