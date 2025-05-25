@@ -48,7 +48,6 @@
 .nav-menu .button_1 {
     text-align: center;
     font-family: 'Courier Prime', monospace;
-    color: dimgrey;
     margin-left: 20px;
     transition: transform 0.2s ease, background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease; /* added border bottom */
 
@@ -57,7 +56,6 @@
 
 .nav-menu .button_1:hover{
     border-color: black;
-    color: white;
 
 }
 
