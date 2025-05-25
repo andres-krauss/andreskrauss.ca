@@ -14,13 +14,19 @@
     --font-mono: 'Courier Prime', monospace;
     --font-sans: 'Open Sans', sans-serif;
 
-    --gap-default: 1rem;
+
     --transition-fast: 0.2s ease;
     --line-height-heading: 1.2;
 
-    --space-inline: clamp(0.5rem, 5vw, 3.5rem);
-    --space-block: clamp(1rem, 2.5vw + 0.5rem, 3.5rem);
-    --space-block-half: clamp(0.5rem, 1.25vw + 0.25rem, 1.75rem);
+    --space-inline: clamp(0.5rem, 3.5vw + 0.5rem, 3.5rem);
+    --space-block: clamp(1rem, 3.5vw + 0.5rem, 3.5rem);
+    --space-block-half: clamp(0.5rem, 1.75vw + 0.25rem, 1.75rem);     /* 50% of block */
+    --space-block-75: clamp(0.75rem, 2.625vw + 0.375rem, 2.625rem);   /* 75% of block */
+    --gap-default: var(--space-block-half);
+
+    --dotted-line: 2px dotted lightgray;
+    --solid-line: 1px solid lightgray;
+
 }
 
 html {
@@ -32,6 +38,7 @@ body {
     color: var(--primary-text-color);
     font-family: var(--font-sans), serif;
     font-weight: 400;
+    margin: 0;
 }
 
 /* ======================
@@ -42,24 +49,24 @@ section {
     padding-block: var(--space-block);
     margin-block: var(--space-block);
     font-family: var(--font-mono), serif;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 
-}
-
-article {
-    padding-block-start: var(--space-block);
-    padding-inline: var(--space-inline);
-}
-
-article:is(:last-of-type) {
-    padding-block-end: var(--space-block);
 }
 
 section {
     text-align: center;
     margin-inline: var(--space-inline);
-    padding-inline: var(--space-inline);
-
 }
+
+
+article {
+    padding-inline: var(--space-inline);
+}
+
+article:not(:last-of-type) {
+    padding-block-end: var(--space-block);
+}
+
 
 footer {
     background-color: var(--secondary-bg-color);
@@ -67,14 +74,9 @@ footer {
     text-align: center;
 }
 
-
-#gridContainer .col-md-4 {
-    padding-right: calc(var(--space-inline) /3);
-}
-
-
-
-
+/* ======================
+   🔧 Typography & Utility
+====================== */
 section.flex {
     display: flex;
     justify-content: center;
@@ -82,44 +84,51 @@ section.flex {
     text-align: start;
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--bs-heading-color);
+}
+
 h1 {
-    font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem); /* 32px → ~56px */
+    font-size: clamp(2rem, 4vw + 0.5rem, 3rem);
     line-height: var(--line-height-heading);
-    margin-bottom: clamp(1.5rem, 2.5vw, 3rem);
 }
 
 h2 {
-    font-size: clamp(1.5rem, 3vw + 0.25rem, 2.5rem); /* 24px → 40px */
+    font-size: clamp(1.5rem, 3vw + 0.25rem, 2rem);
     line-height: var(--line-height-heading);
 }
 
+h5 {
+    font-size: 1.25rem;
+}
+
 .title {
-    font-size: clamp(1rem, 9vw + 0.25rem, 7.5rem); /* 44px → 120px */
-    line-height: 0.65;
+    font-size: clamp(1rem, 9vw + 0.25rem, 7.5rem);
+    line-height: 0.85;
     font-weight: 100;
 }
 
 p {
-    font-size: clamp(1rem, 0.8vw + 0.5rem, 1.1rem); /* 16px → 20px */
-    line-height:  2.25;
+    font-size: clamp(1rem, 0.8vw + 0.5rem, 1.1rem);
+    line-height: 2.25;
 }
 
 #gridContainer p {
-    line-height:  1.5;
+    line-height: 1.5;
     margin-block-start: 0.8rem;
 }
 
-
-
 article p {
-    margin-bottom: 0;
+    margin-block: 0;
 }
 
 article p:not(:last-of-type) {
     margin-bottom: 1rem;
 }
-
-
 
 a,
 a:visited,
@@ -147,40 +156,23 @@ a:active {
     display: none;
 }
 
-
-@media (max-width: 1024px) {
-    .navbar {
-        padding-inline: 10px !important;
-    }
-    .nav-link {
-        margin-inline: 0px !important;
-    }
-}
-
 @media (max-width: 768px) {
     :root {
         --space-inline: 0px;
-
     }
 
     article {
         padding-inline: 10px;
     }
 
-
     section,
     main {
         text-align: center;
     }
 
-
     section.flex {
         flex-direction: column;
         text-align: center;
-    }
-
-    h1 {
-        margin-bottom: 40px;
     }
 
     .hide-on-mobile {
@@ -194,11 +186,8 @@ a:active {
     .show-on-mobile-block {
         display: block;
     }
-
-
-
-
 }
+
 /* ======================
    🌐 Icon Row
 ====================== */
@@ -218,41 +207,4 @@ a:active {
 .icon-row img:hover {
     transform: scale(1.2);
 }
-
-
-/* ======================
-   🔽 Enhanced Dropdown Menu
-====================== */
-/* 🎨 Animated, square Bootstrap dropdown */
-.navbar .dropdown-menu {
-
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    left: auto !important;
-    right: 0 !important;
-    position: absolute !important;
-}
-
-.dropdown-menu {
-    left: auto !important;
-    right: 0 !important;
-}
-/* HAMBURGER */
-.navbar-toggler {
-}
-
-.navbar-nav {
-    flex-direction: column;
-
-}
-
-.navbar-toggler {
-    --bs-navbar-toggler-icon-bg: url('https://api.iconify.design/material-symbols/menu-rounded.svg?color=black');
-    border: none !important;
-}
-
-
-
-
 

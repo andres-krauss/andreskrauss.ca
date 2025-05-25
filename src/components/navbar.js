@@ -1,35 +1,64 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const navbarHTML = `
-        <nav class="navbar navbar-expand-lg" style="padding-inline: var(--space-inline); padding-block: var(--space-block-half); background-color: white;">
-            <div class="container-fluid" style="padding-inline: 0;">
-                <a class="navbar-brand" style="font-size: 3rem;    font-family: var(--font-mono), serif; font-weight: ; color: var(--primary-bg-color)" href="#">AK.</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex-grow: 0 !important;">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item" style="margin-left: auto; text-align: right;">
-                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item" style="margin-left: auto; text-align: right;">
-                            <a class="nav-link" href="projects.html">Projects</a>
-                        </li>
-                        <li class="nav-item" style="margin-left: auto; text-align: right;">
-                            <a class="nav-link" style="background-color: #fde6ba" href="krauss_approved.html">K-Approved</a>
-                        </li>
-                        <li class="nav-item dropdown" style="margin-left: auto; text-align: right;">
-                            <a class="nav-link dropdown-toggle" style="margin-right: 0px !important;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Other</a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Newsletter (WIP)</a></li>
-                                <li><a class="dropdown-item" href="#">Coming Soon!</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Maybe One Day.</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+        <article>
+            <div class="nav-inner">
+                <a class="nav-brand" href="#">AK.</a>
+                <div class="nav-toggle" aria-label="Toggle menu">☰</div>
+                <ul class="nav-menu">
+                    <li><a class="button_1" href="index.html">Home</a></li>
+                    <li><a class="button_1" href="projects.html">Projects</a></li>
+                    <li><a class="button_1 k-approved" href="krauss_approved.html">K-Approved</a></li>
+                    <li class="nav-dropdown">
+                        <a class="button_1 nav-dropdown-toggle" href="#">Other ▾</a>
+                        <ul class="nav-dropdown-menu">
+                            <li><a href="#" class="button_1">Newsletter (WIP)</a></li>
+                            <li><a href="#" class="button_1">Glintbloom.io (WIP) </a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </nav>`;
-
+        </article>
+    `;
     document.getElementById("navbarContainer").innerHTML = navbarHTML;
+
+    const toggleBtn = document.querySelector(".nav-toggle");
+    const navMenu = document.querySelector(".nav-menu");
+    const dropdownToggle = document.querySelector(".nav-dropdown-toggle");
+    const dropdownMenu = document.querySelector(".nav-dropdown-menu");
+
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    function updateLayout() {
+        if (isMobile()) {
+            toggleBtn.style.display = "block";
+            navMenu.classList.remove("nav-open");
+            navMenu.style.display = "none";
+        } else {
+            toggleBtn.style.display = "none";
+            navMenu.style.display = "flex";
+            dropdownMenu.style.display = "none";
+        }
+    }
+
+    toggleBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("nav-open");
+        navMenu.style.display = navMenu.classList.contains("nav-open") ? "flex" : "none";
+    });
+
+    dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        const isOpen = dropdownMenu.style.display === "flex";
+        dropdownMenu.style.display = isOpen ? "none" : "flex";
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav-dropdown")) {
+            dropdownMenu.style.display = "none";
+        }
+    });
+
+    window.addEventListener("resize", updateLayout);
+    updateLayout();
 });

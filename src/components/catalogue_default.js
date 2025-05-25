@@ -6,8 +6,23 @@ function initCatalogueGrid() {
     }
 
     const csvURL = gridContainer.dataset.csv || 'data/catalogue/catalogue.csv';
-    const NUM_COLUMNS = parseInt(gridContainer.dataset.cols) || 4;
-    const colClass = `col-md-${12 / NUM_COLUMNS}`;
+    const INITIAL_NUM_COLUMNS = parseInt(gridContainer.dataset.cols) || 3;
+
+    // Get spacing
+    const GAP_VAR = getComputedStyle(document.documentElement)
+        .getPropertyValue('--gap-default')
+        .trim() || '1rem';
+    const appliedGap = GAP_VAR;
+
+    // Setup base layout
+    Object.assign(gridContainer.style, {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: appliedGap,
+        justifyContent: 'flex-start'
+    });
+
+    const entries = [];
 
     function fetchCSV(url, callback) {
         fetch(url)
@@ -29,50 +44,72 @@ function initCatalogueGrid() {
         const trimmedItemA = item_A.trim();
 
         if (trimmedItemA.startsWith("http")) {
-            console.log(`🔗 item_A [row ${index}]:`, trimmedItemA);
             itemA_HTML = `<a href="${trimmedItemA}" target="_blank">
                 <img src="media/icons/linkedin.png" style="width: 25px" alt="LinkedIn">
             </a>`;
-        } else if (trimmedItemA.length > 0) {
-            console.warn(`⚠️ item_A is non-empty but not a URL [row ${index}]:`, trimmedItemA);
         }
 
         return `
         <div class="product_cell">
-            <div class="img_container" style="width: 100%; height: auto; display: block; overflow: hidden; margin-block: 20px;">
+            <div class="img_container" style="width: 100%; height: auto; display: block; overflow: hidden; margin-bottom: 20px;">
                 <img src="${image_path}" alt="${title}" style="width: 100%; height: auto; display: block; object-fit: cover;">
             </div>
-            <div class="d-flex">
-                <span class="fs-2">${title}</span>
-                <span class="fs-6 ms-auto">${date}</span>
+            <div style="display: flex; justify-content: space-between; align-items: start;">
+                <h2 style="margin: 0;">${title}</h2>
+                <div style="display: flex; flex-direction: column; align-items: end; gap: 4px;">
+                    <span style="font-size: 0.9rem;">${date}</span>
+                    ${itemA_HTML}
+                </div>
             </div>
             <div>
                 <span>${sub_title}</span>
-                <span>${itemA_HTML}</span>
             </div>
             <p>${desc_short}</p>
         </div>
         `;
     }
 
+    function renderColumns() {
+        const isMobile = window.innerWidth <= 600;
+        const isTablet = window.innerWidth <= 900;
+        const gap = parseFloat(getComputedStyle(gridContainer).gap) || 0;
+
+        let columns = INITIAL_NUM_COLUMNS;
+        if (isMobile) {
+            columns = 1;
+        } else if (isTablet) {
+            columns = 2;
+        }
+
+        const gapTotal = (columns - 1) * gap;
+        const columnWidth = `calc((100% - ${gapTotal}px) / ${columns})`;
+
+        for (const col of gridContainer.children) {
+            col.style.flex = `1 1 ${columnWidth}`;
+            col.style.maxWidth = columnWidth;
+        }
+    }
+
     function populateGrid(data) {
         for (let i = 1; i < data.length; i++) {
             const row = data[i];
             if (row.length >= 10) {
-                const [ , image_path, title, sub_title, date, desc_short, desc_long, item_A, item_B, item_C ] = row.map(cell => cell.trim());
+                const [, image_path, title, sub_title, date, desc_short, desc_long, item_A, item_B, item_C] = row.map(cell => cell.trim());
+                const html = generateProductHTML(i, image_path, title, sub_title, date, desc_short, desc_long, item_A, item_B, item_C);
 
-                const productHTML = generateProductHTML(i, image_path, title, sub_title, date, desc_short, desc_long, item_A, item_B, item_C);
                 const col = document.createElement('div');
-                col.className = `${colClass} mb-4`;
-                col.innerHTML = productHTML;
+                col.classList.add('grid-item');
+                col.innerHTML = html;
+                col.style.boxSizing = 'border-box';
                 gridContainer.appendChild(col);
-                console.log(`✅ Added product row ${i}: "${title}"`);
-            } else {
-                console.warn(`⚠️ Skipping row ${i}, not enough columns:`, row);
+                entries.push(col);
             }
         }
+
+        renderColumns();
     }
 
+    window.addEventListener('resize', renderColumns);
     fetchCSV(csvURL, populateGrid);
 }
 

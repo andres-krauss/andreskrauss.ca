@@ -1,0 +1,5 @@
+npm run dev
+
+npx vite build
+
+npx serve docs

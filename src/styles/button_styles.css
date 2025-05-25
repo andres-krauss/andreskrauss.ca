@@ -1,34 +1,16 @@
 
 /* BUTTONS */
-.button_1, .button_special, .button_special_b{
+.button_1, .button_special {
     display: inline-block;
     background-color: white;
     color: black;
-    padding: 5px 10px; /* Adjust padding as needed */
-    margin: 5px;
+    padding-inline: 10px;
+    padding-block: 10px;
     min-width: 80px; /* Adjust the value according to your needs */
     white-space: nowrap; /* Prevent text from wrapping */
-    line-height: 1.75;
+    line-height: 1;
     transition: transform 0.2s ease, background-color 0.5s ease, color 0.5s ease; /* Apply transition to transform, background-color, and color properties */
 }
-
-.button_special_b {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-.button_special_b:hover {
-    transform: scale(1.05); /* Scale up by 5% on hover */
-    background-color: rgb(255, 255, 255); /* Change background color on hover */
-    color: black; /* Change text color on hover */
-}
-
-.button_none {
-    display: inline-block;
-    padding: 10px 20px; /* Adjust padding as needed */
-    white-space: nowrap; /* Prevent text from wrapping */
-}
-
 .button_1:hover {
     transform: scale(1.05); /* Scale up by 5% on hover */
     background-color: black; /* Change background color on hover */
@@ -46,22 +28,23 @@
     background-color: #dde0e4
 }
 
-.nav-link {
-    margin-inline: 20px;
-    padding: 5px 10px;
-    border-radius: 2px;
-    transition: transform 0.2s ease, background-color 0.5s ease, color 0.5s ease, border-radius 0.5s ease;
-    max-width: 110px;
-    display: inline-block; /* Ensures proper layout */
-    text-align: center; /* Center the text */
-    overflow: hidden; /* Prevent visual overflow issues */
-    transform-origin: center; /* Keeps the scale centered */
+
+.button_2 {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding-inline: 10px;
+    padding-block: 10px;
+    min-width: 80px;
+    white-space: nowrap;
+    line-height: 1;
+    transition: transform 0.2s ease, background-color 0.5s ease, color 0.5s ease;
 }
 
-.nav-link:hover {
-    background-color: #e6e8f1; /* Change background color on hover */
-    color: black; /* Change text color on hover */
-    border-radius: 5px; /* Optionally adjust border-radius */
+.button_2:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: black;
 }
 
 
