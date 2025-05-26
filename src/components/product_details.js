@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // URL of your CSV file relative to the HTML file's location
-    const csvURL = 'data/catalogue/catalogue.csv';
+    const csvURL = 'data/catalogue/projects-main.csv';
 
     // Get the index of the selected product from the query string
     const productIndex = getParameterByName('index');

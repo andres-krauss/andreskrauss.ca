@@ -1,7 +1,7 @@
 // main.js
 import './styles/styles.css';
 import './styles/button_styles.css';
-import './styles/nav-bar-styles.css';
+import './styles/navbar-styles.css';
 
 
 import './components/navbar.js';
@@ -18,7 +18,7 @@ window.Papa = Papa; // 🔁 Make it globally available if needed
 const path = window.location.pathname;
 
 if (document.getElementById('gridContainer')) {
-    import('./components/catalogue_default.js');
+    import('./components/content-loader.js');
 }
 
 if (path.includes('project_details.html')) {
