@@ -4,20 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="nav-inner">
                 <a class="nav-brand" href="#">AK.</a>
                 <div class="nav-toggle" aria-label="Toggle menu">☰</div>
-                <ul class="nav-menu">
+                <div class="nav-menu">
                     <li><a class="button_1" href="index.html">Home</a></li>
                     <li><a class="button_1" href="projects.html">Projects</a></li>
                     <li><a class="button_1 k-approved" href="krauss_approved.html">K-Approved</a></li>
                     <li class="nav-dropdown">
                         <a class="button_1 nav-dropdown-toggle" href="#">Other ▾</a>
-                        <ul class="nav-dropdown-menu">
-                            <li><a href="#" class="button_1">Newsletter (WIP)</a></li>
-                            <li><a href="#" class="button_1">Glintbloom.io (WIP) </a></li>
-                        </ul>
                     </li>
-                </ul>
+                </div>
             </div>
         </article>
+        <div class="nav-dropdown-menu">
+            <div style="margin-inline: var(--space-inline)">
+                <li><a href="#" class="button_1">Newsletter (WIP)</a></li>
+                <li><a href="#" class="button_1">Glintbloom.io (WIP)</a></li>
+            </div>
+        </div>
     `;
     document.getElementById("navbarContainer").innerHTML = navbarHTML;
 
@@ -49,12 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dropdownToggle.addEventListener("click", (e) => {
         e.preventDefault();
-        const isOpen = dropdownMenu.style.display === "flex";
-        dropdownMenu.style.display = isOpen ? "none" : "flex";
+        const isOpen = dropdownMenu.style.display === "block";
+        dropdownMenu.style.display = isOpen ? "none" : "block";
     });
 
     document.addEventListener("click", (e) => {
-        if (!e.target.closest(".nav-dropdown")) {
+        if (!e.target.closest(".nav-dropdown") && !e.target.closest(".nav-dropdown-menu")) {
             dropdownMenu.style.display = "none";
         }
     });

@@ -7,11 +7,19 @@
     style.textContent = `
     .glintfall-slideshow {
       position: relative;
-      max-width: 80%;
-      margin-inline: auto;
       margin-block: var(--space-block);
       overflow: hidden;
+      width: 80%;
+      margin-inline: auto;
     }
+    
+    @media (max-width: 768px) {
+      .glintfall-slideshow {
+        width: 100%;
+        margin-inline: 0;
+      }
+    }
+
 
     .glintfall-slide {
       position: absolute;
@@ -83,7 +91,7 @@
     const html = `
     <div class="glintfall-slideshow">
       <div class="glintfall-slide active">
-        <img src="media/projects/networking/ccc_2025.jpg" />
+        <img src="data/catalogue/images/ccc_2025.png" />
       </div>
       <div class="glintfall-slide">
         <img src="media/projects/glintbloom-demo.PNG" />

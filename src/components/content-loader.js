@@ -80,7 +80,7 @@ function initCatalogueGrid() {
             : 'max-height: 0; overflow: hidden; transition: max-height 0.3s ease;';
 
         return `
-        <div class="product_cell-inner" style="box-sizing: border-box; margin-bottom: ${appliedGap}; break-inside: avoid; font-family: ${FONT};">
+        <div class="product_cell-inner" style="box-sizing: border-box; break-inside: avoid; font-family: ${FONT};">
             <div class="toggle-wrapper" style="position: relative; cursor: pointer;">
                 <img src="${clean(image_path)}" alt="${clean(title)}" style="width: 100%; height: auto; display: block; object-fit: cover;">
                 <div class="reveal-panel" style="${revealStyle}">
