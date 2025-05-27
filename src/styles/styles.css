@@ -25,6 +25,7 @@
     --gap-default: var(--space-block-half);
 
     --dotted-line: 2px dotted lightgray;
+    --dotted-line-dark: 2px dotted darkgray;
     --solid-line: 1px solid lightgray;
     --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     --margin-b1: 1rem;
@@ -65,6 +66,7 @@ section {
 
 article {
     padding-inline: var(--space-inline);
+    font-family: var(--font-mono), serif;
 }
 
 article:not(:last-of-type) {
@@ -92,7 +94,7 @@ section.flex {
     margin-top: 0;
     margin-bottom: var(--margin-b1);
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1;
     color: var(--bs-heading-color);
 }
 

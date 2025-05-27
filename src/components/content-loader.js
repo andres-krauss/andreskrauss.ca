@@ -1,3 +1,5 @@
+import { insertFilterControls } from './filterControls.js';
+
 function initCatalogueGrid() {
     const gridContainer = document.getElementById('gridContainer');
     if (!gridContainer) return console.error("❌ #gridContainer not found in DOM");
@@ -10,42 +12,7 @@ function initCatalogueGrid() {
 
     let allData = [];
 
-    const filterWrapper = document.createElement('div');
-    Object.assign(filterWrapper.style, {
-        marginBottom: '2rem',
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '1rem',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%'
-    });
-
-    const searchInput = document.createElement('input');
-    searchInput.type = 'text';
-    searchInput.placeholder = 'Search...';
-    Object.assign(searchInput.style, {
-        padding: '0.5rem',
-        flex: '1',
-        fontFamily: FONT,
-        fontSize: '1rem',
-        width: window.innerWidth <= 600 ? '100%' : 'auto'
-    });
-
-    const yearSelect = document.createElement('select');
-    const orgSelect = document.createElement('select');
-    [yearSelect, orgSelect].forEach(sel => {
-        Object.assign(sel.style, {
-            padding: '0.5rem',
-            minWidth: '120px',
-            fontFamily: FONT,
-            fontSize: '1rem',
-            width: window.innerWidth <= 600 ? '100%' : 'auto'
-        });
-    });
-
-    gridContainer.parentElement.insertBefore(filterWrapper, gridContainer);
-    filterWrapper.append(searchInput, yearSelect, orgSelect);
+    const { searchInput, yearSelect, orgSelect } = insertFilterControls(FONT);
 
     function createOption(value, label) {
         const opt = document.createElement('option');
@@ -84,20 +51,20 @@ function initCatalogueGrid() {
             <div class="toggle-wrapper" style="position: relative; cursor: pointer;">
                 <img src="${clean(image_path)}" alt="${clean(title)}" style="width: 100%; height: auto; display: block; object-fit: cover;">
                 <div class="reveal-panel" style="${revealStyle}">
-                    <div style="padding-top: 1rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div style="padding-block: var(--space-block);">
+                        <article style="display: flex; justify-content: space-between; align-items: start;">
                             <h2 style="margin: 0;">${clean(title)}</h2>
                             <div style="display: flex; flex-direction: column; align-items: end; gap: 4px;">
                                 <span style="font-size: 0.9rem;">${clean(date)}</span>
                                 ${itemA_HTML}
                             </div>
-                        </div>
-                        <ul style="padding-left: 1rem; margin-top: 0.5rem; margin-bottom: 0;">
+                        </article>
+                        <article>
                             <li> role: ${clean(sub_title_C)} ${clean(sub_title_B)}</li>
                             <li> Inst: ${clean(sub_title)}</li>
                             <li> desc: ${clean(desc_short)}</li>
                             <li> id: ${clean(id)}</li>
-                        </ul>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -190,7 +157,7 @@ function initCatalogueGrid() {
                 desc_short.includes(keyword);
 
             const matchYear = !year || date.includes(year);
-            const matchOrg = !org || sub_title === org;
+            const matchOrg = !org || sub_title.trim() === org.trim().toLowerCase();
 
             return matchKeyword && matchYear && matchOrg;
         });
@@ -209,10 +176,7 @@ function initCatalogueGrid() {
         const years = [...new Set(allData.map(row => row[6].trim() || 'n/a'))].sort().reverse();
         const orgs = [...new Set(allData.map(row => row[3].trim() || 'n/a'))].sort();
 
-        yearSelect.appendChild(createOption('', 'All Years'));
         years.forEach(y => yearSelect.appendChild(createOption(y, y)));
-
-        orgSelect.appendChild(createOption('', 'All Orgs'));
         orgs.forEach(o => orgSelect.appendChild(createOption(o, o)));
 
         populateGrid(allData);

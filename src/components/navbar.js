@@ -1,25 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
     const navbarHTML = `
-        <article>
-            <div class="nav-inner">
-                <a class="nav-brand" href="#">AK.</a>
-                <div class="nav-toggle" aria-label="Toggle menu">☰</div>
-                <div class="nav-menu">
-                    <li><a class="button_1" href="index.html">Home</a></li>
-                    <li><a class="button_1" href="projects.html">Projects</a></li>
-                    <li><a class="button_1 k-approved" href="krauss_approved.html">K-Approved</a></li>
-                    <li class="nav-dropdown">
-                        <a class="button_1 nav-dropdown-toggle" href="#">Other ▾</a>
-                    </li>
+    <section style="margin: unset; box-shadow: unset;">
+            <article>
+                <div class="nav-inner">
+                    <a class="nav-brand" href="#">AK.</a>
+                    <div class="nav-toggle" aria-label="Toggle menu">☰</div>
+                    <div class="nav-menu">
+                        <li><a class="button_1" href="index.html">Home</a></li>
+                        <li><a class="button_1" href="projects.html">Projects</a></li>
+                        <li><a class="button_1 k-approved" href="krauss_approved.html">K-Approved</a></li>
+                        <li class="nav-dropdown">
+                            <a class="button_1 nav-dropdown-toggle" href="#">Other ▾</a>
+                        </li>
+                    </div>
+                </div>
+            </article>
+            <div class="nav-dropdown-menu">
+                <div style="margin-inline: var(--space-inline)">
+                    <li><a href="#" class="button_1">Newsletter (WIP)</a></li>
+                    <li><a href="#" class="button_1">Glintbloom.io (WIP)</a></li>
                 </div>
             </div>
-        </article>
-        <div class="nav-dropdown-menu">
-            <div style="margin-inline: var(--space-inline)">
-                <li><a href="#" class="button_1">Newsletter (WIP)</a></li>
-                <li><a href="#" class="button_1">Glintbloom.io (WIP)</a></li>
-            </div>
-        </div>
+    </section>
     `;
     document.getElementById("navbarContainer").innerHTML = navbarHTML;
 
