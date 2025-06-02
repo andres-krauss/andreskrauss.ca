@@ -51,20 +51,22 @@ function initCatalogueGrid() {
             <div class="toggle-wrapper" style="position: relative; cursor: pointer;">
                 <img src="${clean(image_path)}" alt="${clean(title)}" style="width: 100%; height: auto; display: block; object-fit: cover;">
                 <div class="reveal-panel" style="${revealStyle}">
-                    <div style="padding-block: var(--space-block);">
-                        <article style="display: flex; justify-content: space-between; align-items: start;">
+                    <div style="padding-top: var(--space-block-half);">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: var(--space-block-half);">
                             <h2 style="margin: 0;">${clean(title)}</h2>
-                            <div style="display: flex; flex-direction: column; align-items: end; gap: 4px;">
-                                <span style="font-size: 0.9rem;">${clean(date)}</span>
-                                ${itemA_HTML}
+                            <div style="display: flex; flex-direction: row; align-items: center; gap: 4px;">
+                                <span style="font-size: 0.9rem; line-height: 1.2">${clean(date)}</span>
+                                <span class="hide-on-mobile">${itemA_HTML}</span>
                             </div>
-                        </article>
-                        <article>
+                            
+                        </div>
+
+                        <div>
                             <li> role: ${clean(sub_title_C)} ${clean(sub_title_B)}</li>
                             <li> Inst: ${clean(sub_title)}</li>
                             <li> desc: ${clean(desc_short)}</li>
                             <li> id: ${clean(id)}</li>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </div>
